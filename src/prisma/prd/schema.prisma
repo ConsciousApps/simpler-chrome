@@ -1,0 +1,176 @@
+generator client {
+  provider        = "prisma-client-js"
+  binaryTargets   = ["native", "rhel-openssl-1.0.x"]
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider             = "mysql"
+  url                  = env("APP_DB")
+  shadowDatabaseUrl    = env("APP_DB_SHADOW")
+  referentialIntegrity = "prisma"
+}
+
+model Activity {
+  id         String    @id @default(uuid())
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  timezone   String?
+  // --- PUBLIC ID ---
+  activityId String    @unique
+  // --- RELATIONS ---
+  Circle     Circle?   @relation("OCircleToActivities", fields: [circleId], references: [circleId])
+  circleId   String?
+  Category   Category? @relation("OCategoryToActivities", fields: [categoryId], references: [categoryId])
+  categoryId String?
+  Todo       Todo?     @relation("OTodoToActivities", fields: [todoId], references: [todoId])
+  todoId     String?
+  User       User      @relation("RUserToActivities", fields: [userId], references: [userId])
+  userId     String
+  // --- FIELDS ---
+  model      String? // `todo`, `category`
+  type       String? // `create`, `delete`, `archive`, `draft`, `complete`
+
+  @@index([todoId])
+  @@index([userId])
+}
+
+model Category {
+  id         String     @id @default(uuid())
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+  // --- PUBLIC ID ---
+  categoryId String     @unique
+  // --- RELATIONS ---
+  Activities Activity[] @relation("OCategoryToActivities")
+  Circle     Circle?    @relation("OCircleToCategories", fields: [circleId], references: [circleId])
+  circleId   String?
+  Todos      Todo[]     @relation("CategoriesToTodos")
+  User       User       @relation("RUserToCategories", fields: [userId], references: [userId])
+  userId     String
+  // --- FIELDS ---
+  color      String?
+  isArchived Boolean    @default(false)
+  isDeleted  Boolean    @default(false)
+  isDraft    Boolean    @default(true)
+  isNew      Boolean    @default(true)
+  isTutorial Boolean    @default(false)
+  name       String
+  sortOrder  Int?
+  schedules  Json? // e.g. `[{ from: { hour: 9, minute: 0 }, to: { hour: 17, minute: 0 }, weekdays: ['Mon','Tue','Wed','Thu','Fri'] }]`
+
+  @@index([circleId])
+  @@index([userId])
+}
+
+model Circle {
+  id           String     @id @default(uuid())
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  // --- PUBLIC ID ---
+  circleId     String     @unique
+  // --- RELATIONS ---
+  Activities   Activity[] @relation("OCircleToActivities")
+  Categories   Category[] @relation("OCircleToCategories")
+  Todos        Todo[]     @relation("OCircleToTodos")
+  UserAdmins   User[]     @relation("CirclesToUserAdmins")
+  UserMembers  User[]     @relation("CirclesToUserMembers")
+  UserRequests User[]     @relation("CirclesToUserRequests")
+  // --- FIELDS ---
+  isArchived   Boolean    @default(false)
+  isDeleted    Boolean    @default(false)
+  name         String?
+}
+
+model Todo {
+  id                          String     @id @default(uuid())
+  createdAt                   DateTime   @default(now())
+  updatedAt                   DateTime   @updatedAt
+  // --- PUBLIC ID ---
+  todoId                      String     @unique
+  // --- RELATIONS ---
+  Activities                  Activity[] @relation("OTodoToActivities")
+  Categories                  Category[] @relation("CategoriesToTodos")
+  Circle                      Circle?    @relation("OCircleToTodos", fields: [circleId], references: [circleId])
+  circleId                    String?
+  User                        User       @relation("RUserToTodos", fields: [userId], references: [userId])
+  userId                      String
+  // --- FIELDS ---
+  dateDue                     DateTime?
+  dateDueTimezone             String?
+  dateDueType                 String     @default("someday")
+  dateStart                   DateTime?
+  dateStartPredecessors       Todo[]     @relation("DateStartTodos")
+  dateStartPredecessorsAllAny AllAny? // If `dateStartPredecessors` has values, this will be required
+  dateStartPredecessorsAndOr  AndOr? // If `dateStart` and `dateStartPredecessors` have values, this will be required
+  dateStartSuccessors         Todo[]     @relation("DateStartTodos")
+  dateStartTimezone           String?
+  durationEstimate            Int? // 5, 15, 30, 60, 61
+  isArchived                  Boolean    @default(false)
+  isDeleted                   Boolean    @default(false)
+  isDraft                     Boolean    @default(true)
+  isImportant                 Boolean    @default(false)
+  isNew                       Boolean    @default(true)
+  isTimeSensitive             Boolean    @default(false)
+  isTutorial                  Boolean    @default(false)
+  name                        String?
+  notes                       String?    @db.Text
+  sortOrder                   Int?
+
+  @@index([circleId])
+  @@index([userId])
+}
+
+enum AllAny {
+  ALL
+  ANY
+}
+
+enum AndOr {
+  AND
+  OR
+}
+
+model User {
+  id               String      @id @default(uuid())
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+  // --- PUBLIC ID ---
+  userId           String      @unique
+  // --- RELATIONS ---
+  Activities       Activity[]  @relation("RUserToActivities")
+  Categories       Category[]  @relation("RUserToCategories")
+  CirclesAdmin     Circle[]    @relation("CirclesToUserAdmins")
+  CirclesInvitee   Circle[]    @relation("CirclesToUserRequests")
+  CirclesMember    Circle[]    @relation("CirclesToUserMembers")
+  Todos            Todo[]      @relation("RUserToTodos")
+  UserAlias        UserAlias?  @relation("OUserToOUserAlias")
+  UserAliases      UserAlias[] @relation("OUserToUserAliases")
+  // --- FIELDS ---
+  authProvider     String?
+  authUsername     String?
+  email            String      @unique
+  nameFirst        String?
+  nameLast         String?
+  paid             Boolean     @default(false)
+  paidTier         String?     @default("free")
+  profile          String?
+  settings         Json? // `{ categories: 'Work', celebrate: true, focusMode: true, important: false, timesensitive: true, zen: false }
+  stripeCustomerId String?
+}
+
+model UserAlias {
+  id          String   @id @default(uuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  // --- PUBLIC ID ---
+  userAliasId String?  @unique
+  // --- RELATIONS ---
+  User        User?    @relation("OUserToUserAliases", fields: [userEmail], references: [email])
+  userEmail   String?
+  Alias       User?    @relation("OUserToOUserAlias", fields: [aliasEmail], references: [email])
+  aliasEmail  String?  @unique
+
+  @@index([aliasEmail])
+  @@index([userEmail])
+}

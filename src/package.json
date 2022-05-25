@@ -3,14 +3,18 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
-		"build": "next build && next export && mv out/_next out/next && sed -i '' -e 's/\\/_next/\\.\\/next/g' out/**.html && mv out/index.html ../extension && rsync -va --delete-after out/next/ ../extension/next/ && rm -rf out && rsync -va --delete-after public/next-assets ../extension/",
-		"start": "next start",
+		"build": "node ./scripts/build && next export && mv out/_next out/next && sed -i '' -e 's/\\/_next/\\.\\/next/g' out/**.html && mv out/index.html ../extension && rsync -va --delete-after out/next/ ../extension/next/ && rm -rf out && rsync -va --delete-after public/next-assets ../extension/",
+		"start": "node ./scripts/build && next start",
 		"lint": "next lint"
 	},
 	"dependencies": {
+		"@prisma/client": "^3.14.0",
 		"next": "latest",
 		"react": "latest",
 		"react-dom": "latest"
 	},
-	"devDependencies": {}
+	"devDependencies": {
+		"prisma": "^3.14.0",
+		"shelljs": "^0.8.5"
+	}
 }
