@@ -2,9 +2,9 @@
 	"name": "next-app",
 	"private": true,
 	"scripts": {
-		"dev": "next dev",
+		"next": "node ./scripts/dev",
 		"build": "node ./scripts/build && next export && mv out/_next out/next && sed -i '' -e 's/\\/_next/\\.\\/next/g' out/**.html && mv out/index.html ../extension && rsync -va --delete-after out/next/ ../extension/next/ && rm -rf out && rsync -va --delete-after public/next-assets ../extension/",
-		"start": "node ./scripts/build && next start",
+		"start": "node ./scripts/build && node ./scripts/start",
 		"lint": "next lint"
 	},
 	"dependencies": {
@@ -14,6 +14,7 @@
 		"react-dom": "latest"
 	},
 	"devDependencies": {
+		"inquirer": "^8.2.4",
 		"prisma": "^3.14.0",
 		"shelljs": "^0.8.5"
 	}
