@@ -27,7 +27,7 @@ const DesignStylesButton = ({
 		'text-brand1 dark:text-brand1Dark hover:text-brand2 dark:hover:text-brand2Dark font-semibold uppercase'
 	].find(x => x)
 
-	return `flex justify-center items-center font-medium tracking-wide focus:outline-none ${cursor} ${size} ${style} ${type}`
+	return `flex justify-center items-center text-base font-medium tracking-wide focus:outline-none ${cursor} ${size} ${style} ${type}`
 }
 
 export default DesignStylesButton
