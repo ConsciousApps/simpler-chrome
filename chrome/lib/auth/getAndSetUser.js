@@ -13,7 +13,7 @@ const LibAuthGetAndSetUser = async ({
 	user = {}
 }) => {
 	const { data: apiAuthSignin } = await fetchApi({
-		path: '/api/auth/signin',
+		path: `${process.env.NEXT_PUBLIC_APP_URL}/api/auth/signin`,
 		data: { ...user }
 	})
 
