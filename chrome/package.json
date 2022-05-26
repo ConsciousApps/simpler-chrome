@@ -5,6 +5,7 @@
 		"build": "node ./scripts/build && next export && mv out/_next out/next && sed -i '' -e 's/\\/_next/\\.\\/next/g' out/**.html && mv out/index.html ../extension && rsync -va --delete-after out/next/ ../extension/next/ && rm -rf out && rsync -va --delete-after public/assets ../extension/",
 		"next": "node ./scripts/dev",
 		"start": "node ./scripts/build && node ./scripts/start",
+		"git:unused": "next-unused",
 		"tailwind": "tailwindcss -i ./design/styles/input.css -o ./design/styles/output.css --watch",
 		"translate": "i18next --config lang.config.js"
 	},
@@ -37,9 +38,31 @@
 		"@tailwindcss/typography": "^0.5.2",
 		"autoprefixer": "^10.4.7",
 		"inquirer": "^8.2.4",
+		"next-unused": "^0.0.6",
 		"postcss": "^8.4.14",
 		"prisma": "^3.14.0",
 		"shelljs": "^0.8.5",
 		"tailwindcss": "^3.0.24"
+	},
+	"next-unused": {
+		"alias": {
+			"+": "apis",
+			"$": "content",
+			"-": "contexts",
+			"~": "design/elements",
+			"^": "design/layouts",
+			"@": "design/styles",
+			"=": "hooks",
+			"%": "lib"
+		},
+		"include": [
+			"apis",
+			"design",
+			"hooks",
+			"pages"
+		],
+		"entrypoints": [
+			"pages"
+		]
 	}
 }
