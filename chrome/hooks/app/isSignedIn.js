@@ -26,7 +26,7 @@ const HooksAppOnLoad = () => {
 	console.log(apiUserGet)
 
 	useEffect(() => {
-		// setLoading(true)
+		setLoading(true)
 
 		// Set it right away for a snappier UX, then verify via magic below
 		if (get('auth')) setAuthIsSignedIn(true)
