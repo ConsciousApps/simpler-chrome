@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { useAuthCtx } from '-/auth'
 import { useLoadingCtx } from '-/loading'
 // Functions
+import getAndSetUser from '#/auth/getAndSetUser'
 import magic from '#/auth/magic'
 
 const HooksAuthEmailSignin = ({ email, submit }) => {
