@@ -1,6 +1,6 @@
-const DesignElementsLogo = ({ tw = 'h-8 text-brand1 dark:text-brand1Dark' }) => (
+const DesignElementsLogo = () => (
 	<svg
-		className={`fill-current shrink-0 w-auto ${tw}`}
+		className={`fill-brand1 shrink-0 w-auto mx-auto h-8 mb-4`}
 		version='1.1'
 		xmlns='http://www.w3.org/2000/svg'
 		x='0'

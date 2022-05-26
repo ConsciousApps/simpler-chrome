@@ -16,10 +16,10 @@ const PagesHome = () => {
 	return (
 		<>
 			<div
-				className='cursor-pointer'
+				className='cursor-pointer text-brand1'
 				onClick={() => window.open(process.env.NEXT_PUBLIC_APP_DOMAIN, '_system')}
 			>
-				<Logo tw='mx-auto w-auto h-8 mb-4' />
+				<Logo />
 			</div>
 
 			{!loading && (

@@ -19,6 +19,7 @@ const DesignStylesText = ({
 		appearance === 'color' ? 'text-brand1 dark:text-brand1Dark' : null,
 		appearance === 'light' ? 'text-inverted dark:text-invertedDark' : null,
 		appearance === 'muted' ? 'text-tertiary dark:text-tertiaryDark' : null,
+		type === 'link' ? 'text-brand1 dark:text-brand1Dark' : null,
 		'text-primary dark:text-primaryDark'
 	].find(x => x)
 

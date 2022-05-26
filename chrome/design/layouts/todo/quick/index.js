@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { CollectionIcon } from '@heroicons/react/solid'
 // Contexts
+import { useLoadingCtx } from '-/loading'
 import { useTodoCtx } from '-/todo'
 // Hooks
 import useGetCategories from '=/design/layouts/todo/getCategories'
@@ -30,6 +31,8 @@ import Input from '~/input'
 
 const DesignLayoutsTodoQuick = ({ quickAdd, setQuickAdd, setQuickAddTodo }) => {
 	const { t } = useTranslation()
+
+	const { loading } = useLoadingCtx()
 
 	const { setTodoDurationEstimate, setTodoIsDraft, setTodoName, todoDurationEstimate, todoName } =
 		useTodoCtx()
@@ -109,7 +112,8 @@ const DesignLayoutsTodoQuick = ({ quickAdd, setQuickAdd, setQuickAddTodo }) => {
 			<Button
 				{...{
 					action: () => setTodoIsDraft(false),
-					disabled: !todoName || isError,
+					disabled: !todoName || isError || loading,
+					loading,
 					primary: true,
 					text: t(`Quick add`),
 					tw: 'mt-8 mx-auto'

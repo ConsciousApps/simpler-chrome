@@ -922,6 +922,10 @@ select {
   margin-left: 0.25rem;
 }
 
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
 .ml-2 {
   margin-left: 0.5rem;
 }
@@ -932,10 +936,6 @@ select {
 
 .mt-3 {
   margin-top: 0.75rem;
-}
-
-.mb-4 {
-  margin-bottom: 1rem;
 }
 
 .-ml-px {
@@ -1307,6 +1307,10 @@ select {
 
 .bg-no-repeat {
   background-repeat: no-repeat;
+}
+
+.fill-brand1 {
+  fill: #a21caf;
 }
 
 .p-4 {
