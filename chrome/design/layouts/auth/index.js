@@ -17,7 +17,7 @@ const PagesHome = () => {
 		<>
 			<div
 				className='cursor-pointer text-brand1'
-				onClick={() => window.open(process.env.NEXT_PUBLIC_APP_DOMAIN, '_system')}
+				onClick={() => window.open(process.env.NEXT_PUBLIC_APP_URL, '_system')}
 			>
 				<Logo />
 			</div>
@@ -33,7 +33,7 @@ const PagesHome = () => {
 						<p className={twText({ type: 'small' })}>
 							Learn more at{' '}
 							<span
-								onClick={() => window.open(process.env.NEXT_PUBLIC_APP_DOMAIN, '_system')}
+								onClick={() => window.open(process.env.NEXT_PUBLIC_APP_URL, '_system')}
 								className={twText({ type: 'link' })}
 							>
 								useSimpler.com

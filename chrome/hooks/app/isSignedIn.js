@@ -19,8 +19,9 @@ const HooksAppOnLoad = () => {
 
 	const { setLoading } = useLoadingCtx()
 
-	const { data: apiUserGet } = useSWR(authToken ? `/api/user/get` : null, path =>
-		fetchApi({ isSWR: true, path })
+	const { data: apiUserGet } = useSWR(
+		authToken ? `${process.env.NEXT_PUBLIC_APP_URL}/api/user/get` : null,
+		path => fetchApi({ isSWR: true, path })
 	)
 
 	console.log(apiUserGet)

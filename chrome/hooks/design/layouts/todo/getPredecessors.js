@@ -15,7 +15,7 @@ const HooksDesignLayoutsTodoGetPredecessors = ({ setDateStartPredecessors, toggl
 		;(async () => {
 			if (router.query) {
 				const { data: apiTodoGet } = await fetchApi({
-					path: `/api/todo/get`,
+					path: `${process.env.NEXT_PUBLIC_APP_URL}/api/todo/get`,
 					data: {
 						// --- RELATIONS ---
 						Circle: circleSelected?.circleId,

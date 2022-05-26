@@ -122,7 +122,7 @@ const DesignLayoutsTodoQuick = ({ quickAdd, setQuickAdd, setQuickAddTodo }) => {
 			<div className='flex justify-center mt-4'>
 				<ButtonSmall
 					{...{
-						action: () => window.open(process.env.NEXT_PUBLIC_APP_DOMAIN, '_system'),
+						action: () => window.open(process.env.NEXT_PUBLIC_APP_URL, '_system'),
 						Icon: CollectionIcon,
 						text: t(`See your list`)
 					}}

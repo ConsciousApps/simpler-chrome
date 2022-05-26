@@ -21,7 +21,7 @@ const HooksDesignLayoutsTodoQuickSave = ({ setQuickAdd, setQuickAddTodo }) => {
 				setLoading(true)
 
 				const { data: apiTodoUpsert } = await fetchApi({
-					path: `/api/todo/upsert`,
+					path: `${process.env.NEXT_PUBLIC_APP_URL}/api/todo/upsert`,
 					data: upsertData
 				})
 

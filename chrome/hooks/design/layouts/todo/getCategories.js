@@ -11,7 +11,7 @@ const HooksDesignLayoutsTodoGetCategories = ({ setCategoryOptions }) => {
 	useEffect(() => {
 		;(async () => {
 			const { data: apiCategoryGet } = await fetchApi({
-				path: `/api/category/get`,
+				path: `${process.env.NEXT_PUBLIC_APP_URL}/api/category/get`,
 				data: {
 					// --- RELATIONS ---
 					Circle: circleSelected?.circleId,
