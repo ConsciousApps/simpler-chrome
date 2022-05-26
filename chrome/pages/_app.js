@@ -5,12 +5,15 @@ import '@/output.css'
 // Providers
 import { AuthProvider } from '-/auth'
 import { LoadingProvider } from '-/loading'
+import { TodoProvider } from '-/todo'
 
 const PagesApp = ({ Component, pageProps }) => {
 	return (
 		<AuthProvider>
 			<LoadingProvider>
-				<Component {...pageProps} />
+				<TodoProvider>
+					<Component {...pageProps} />
+				</TodoProvider>
 			</LoadingProvider>
 		</AuthProvider>
 	)
