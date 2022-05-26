@@ -24,8 +24,6 @@ const HooksAppOnLoad = () => {
 		path => fetchApi({ isSWR: true, path })
 	)
 
-	console.log(apiUserGet)
-
 	useEffect(() => {
 		setLoading(true)
 
