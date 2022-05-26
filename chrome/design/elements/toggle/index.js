@@ -32,7 +32,7 @@ const DesignElementsToggleSmall = ({ disabled, icon, setValue, text, value }) =>
 				aria-hidden='true'
 				className={`${
 					value ? 'translate-x-5' : 'translate-x-0'
-				} pointer-events-none absolute left-0 inline-block h-5 w-5 rounded-full bg-bgPrimary dark:bg-bgPrimaryDark shadow transform transition-transform ease-in-out duration-200`}
+				} pointer-events-none absolute left-0 inline-block h-5 w-5 rounded-full bg-white dark:bg-invertedDark shadow transform transition-transform ease-in-out duration-200`}
 			/>
 		</Switch>
 

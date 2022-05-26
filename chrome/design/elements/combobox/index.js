@@ -56,7 +56,7 @@ const DesignElementsCombobox = ({
 				) : null}
 
 				<Combobox.Input
-					className={`w-full h-11 shadow-sm rounded-lg border-line dark:border-lineDark bg-bgPrimary dark:bg-bgSecondaryDark pl-3 pr-10 ${
+					className={`w-full h-11 shadow-sm rounded-lg border-line dark:border-lineDark bg-white dark:bg-invertedDark pl-3 pr-10 ${
 						!disabled
 							? 'focus:border-brand1 dark:focus:border-brand1Dark focus:ring-brand1 dark:focus:ring-brand1Dark'
 							: ''
@@ -76,7 +76,7 @@ const DesignElementsCombobox = ({
 				</Combobox.Button>
 
 				{!disabled && filteredResults?.length ? (
-					<Combobox.Options className='absolute z-9000 mt-1 max-h-60 w-full overflow-auto rounded-lg bg-bgPrimary dark:bg-bgSecondaryDark py-1 shadow-lg ring-1 ring-line focus:outline-none'>
+					<Combobox.Options className='absolute z-9000 mt-1 max-h-60 w-full overflow-auto rounded-lg bg-white dark:bg-invertedDark py-1 shadow-lg ring-1 ring-line focus:outline-none'>
 						{filteredResults.map((option, optionIdx) => (
 							<Combobox.Option
 								key={optionIdx}

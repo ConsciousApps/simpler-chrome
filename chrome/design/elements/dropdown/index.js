@@ -34,7 +34,7 @@ const DesignElementsDropdown = ({
 					>
 						<Listbox.Options
 							static
-							className='absolute z-10000 mt-1 w-full bg-white dark:bg-bgSecondaryDark shadow-lg max-h-60 rounded-lg py-1 overflow-auto focus:outline-none focus-within:outline-none'
+							className='absolute z-10000 mt-1 w-full bg-white dark:bg-invertedDark shadow-lg max-h-60 rounded-lg py-1 overflow-auto focus:outline-none focus-within:outline-none'
 						>
 							{options?.map((option, i) => (
 								<DropdownOption {...{ key: i, option }} />
