@@ -8,10 +8,10 @@ import useGetCategories from '=/design/layouts/todo/getCategories'
 import useGetPredecessors from '=/design/layouts/todo/getPredecessors'
 import useIsQuickAddError from '=/design/layouts/todo/isQuickAddError'
 import useLoadCategories from '=/design/layouts/todo/loadCategories'
-import useLoadDurationValue from '=/design/layouts/animate/pages/dropdown/loadValue'
+import useLoadDuration from '=/design/layouts/todo/loadDuration'
 import useQuickSave from '=/design/layouts/todo/quickSave'
 import useResetQuickAdd from '=/design/layouts/todo/resetQuickAdd'
-import useSaveDurationValue from '=/design/layouts/animate/pages/dropdown/saveValue'
+import useSaveDuration from '=/design/layouts/todo/saveDuration'
 import useSetTodoCategories from '=/design/layouts/todo/setTodoCategories'
 // Constants
 import ALLANY from '$/schema/todo/dateStartPredecessors/allAny'
@@ -25,9 +25,8 @@ import Notes from '^/todo/quick/notes'
 // Elements
 import Button from '~/button'
 import Input from '~/input'
-import Modal from '~/modal'
 
-const DesignLayoutsTodoQuick = ({ listData, quickAdd, setQuickAdd }) => {
+const DesignLayoutsTodoQuick = ({ quickAdd, setQuickAdd }) => {
 	const { t } = useTranslation()
 
 	const { setTodoDurationEstimate, setTodoIsDraft, setTodoName, todoDurationEstimate, todoName } =
@@ -40,9 +39,9 @@ const DesignLayoutsTodoQuick = ({ listData, quickAdd, setQuickAdd }) => {
 	const [durationOptions, setDurationOptions] = useState(DURATION)
 	const [isDependency, setIsDependency] = useState(false)
 
-	useLoadDurationValue({ setOptions: setDurationOptions, value: todoDurationEstimate })
+	useLoadDuration({ setOptions: setDurationOptions, value: todoDurationEstimate })
 
-	useSaveDurationValue({ options: durationOptions, setValue: setTodoDurationEstimate })
+	useSaveDuration({ options: durationOptions, setValue: setTodoDurationEstimate })
 
 	useGetCategories({ setCategoryOptions })
 
@@ -70,10 +69,10 @@ const DesignLayoutsTodoQuick = ({ listData, quickAdd, setQuickAdd }) => {
 
 	const { data: isError } = useIsQuickAddError()
 
-	useQuickSave({ listData, quickAdd, setQuickAdd })
+	useQuickSave({ quickAdd, setQuickAdd })
 
 	return (
-		<Modal {...{ close: () => setQuickAdd(false), isOpen: quickAdd, large: true }}>
+		<>
 			<Input
 				{...{
 					focus: true,
@@ -118,11 +117,11 @@ const DesignLayoutsTodoQuick = ({ listData, quickAdd, setQuickAdd }) => {
 			<Button
 				{...{
 					action: () => setQuickAdd(false),
-					text: t(`Close`),
+					text: t(`Clear`),
 					tw: 'mt-4 mx-auto'
 				}}
 			/>
-		</Modal>
+		</>
 	)
 }
 

@@ -4,6 +4,7 @@ import React from 'react'
 import '@/output.css'
 // Providers
 import { AuthProvider } from '-/auth'
+import { CircleProvider } from '-/circle'
 import { LoadingProvider } from '-/loading'
 import { TodoProvider } from '-/todo'
 
@@ -11,9 +12,11 @@ const PagesApp = ({ Component, pageProps }) => {
 	return (
 		<AuthProvider>
 			<LoadingProvider>
-				<TodoProvider>
-					<Component {...pageProps} />
-				</TodoProvider>
+				<CircleProvider>
+					<TodoProvider>
+						<Component {...pageProps} />
+					</TodoProvider>
+				</CircleProvider>
 			</LoadingProvider>
 		</AuthProvider>
 	)

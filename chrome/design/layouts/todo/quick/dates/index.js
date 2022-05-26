@@ -7,8 +7,8 @@ import { useTodoCtx } from '-/todo'
 import useIsQuickAddError from '=/design/layouts/todo/isQuickAddError'
 import useLoadDateStartDependencies from '=/design/layouts/todo/loadDateStartDependencies'
 import useSaveDateStartDependencies from '=/design/layouts/todo/saveDateStartDependencies'
-import useSetDateDueType from '=/design/layouts/animate/pages/input/setDateDueType'
-import useSetDateDueTypeOptions from '=/design/layouts/animate/pages/input/setDateDueTypeOptions'
+import useSetDateDueType from '=/design/layouts/todo/setDateDueType'
+import useSetDateDueTypeOptions from '=/design/layouts/todo/setDateDueTypeOptions'
 // Functions
 import dateTimeStampShort from '#/dates/dateTimeStampShort'
 // Constants

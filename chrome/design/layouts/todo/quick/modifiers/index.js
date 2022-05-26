@@ -18,7 +18,6 @@ const DesignLayoutsTodoQuickModifiers = ({}) => {
 			<Toggle
 				{...{
 					icon: <FireIcon className='h-5 w-5' aria-hidden='true' />,
-					large: false,
 					setValue: setTodoIsImportant,
 					text: t(`Important`),
 					value: todoIsImportant
@@ -28,7 +27,6 @@ const DesignLayoutsTodoQuickModifiers = ({}) => {
 			<Toggle
 				{...{
 					icon: <ClockIcon className='h-5 w-5' aria-hidden='true' />,
-					large: false,
 					setValue: setTodoIsTimeSensitive,
 					text: t(`Time-Sensitive`),
 					value: todoIsTimeSensitive
