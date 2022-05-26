@@ -1,5 +1,50 @@
+// Packages
+import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+// Contexts
+import { useAuthCtx } from '-/auth'
+import { useLoadingCtx } from '-/loading'
+// Hooks
+import useIsSignedIn from '=/app/isSignedIn'
+import useSignout from '=/auth/signout'
+// Layouts
+import Form from '^/auth/Form'
+import Divider from '^/auth/Divider'
+import Providers from '^/auth/Providers'
+import Terms from '^/auth/terms'
+// Elements
+import Loading from '~/loading'
+
 const PagesHome = () => {
-	return <div className='text-alert dark:text-alertDark'>Hello, world</div>
+	const { t } = useTranslation()
+
+	useIsSignedIn()
+
+	useSignout()
+
+	return (
+		<>
+			<h3>{t(`Create a free account`)}</h3>
+
+			{!loading && (
+				<>
+					<Form />
+
+					<Divider />
+
+					<Providers />
+
+					<Terms />
+				</>
+			)}
+
+			{loading && (
+				<div className='relative h-96 flex justify-center items-center'>
+					<Loading />
+				</div>
+			)}
+		</>
+	)
 }
 
 export default PagesHome
