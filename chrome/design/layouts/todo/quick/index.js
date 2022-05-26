@@ -44,6 +44,21 @@ const DesignLayoutsTodoQuick = ({ quickAdd, setQuickAdd, setQuickAddTodo }) => {
 	const [durationOptions, setDurationOptions] = useState(DURATION)
 	const [isDependency, setIsDependency] = useState(false)
 
+	useResetQuickAdd({
+		allAnyOptions,
+		andOrOptions,
+		categoryOptions,
+		dateStartPredecessors,
+		durationOptions,
+		isDependency,
+		setAllAnyOptions,
+		setAndOrOptions,
+		setCategoryOptions,
+		setDateStartPredecessors,
+		setDurationOptions,
+		setIsDependency
+	})
+
 	useLoadDuration({ setOptions: setDurationOptions, value: todoDurationEstimate })
 
 	useSaveDuration({ options: durationOptions, setValue: setTodoDurationEstimate })
@@ -56,25 +71,9 @@ const DesignLayoutsTodoQuick = ({ quickAdd, setQuickAdd, setQuickAddTodo }) => {
 
 	useGetPredecessors({ setDateStartPredecessors, toggle: quickAdd })
 
-	useResetQuickAdd({
-		allAnyOptions,
-		andOrOptions,
-		categoryOptions,
-		dateStartPredecessors,
-		durationOptions,
-		isDependency,
-		quickAdd,
-		setAllAnyOptions,
-		setAndOrOptions,
-		setCategoryOptions,
-		setDateStartPredecessors,
-		setDurationOptions,
-		setIsDependency
-	})
-
 	const { data: isError } = useIsQuickAddError()
 
-	useQuickSave({ quickAdd, setQuickAdd, setQuickAddTodo })
+	useQuickSave({ setQuickAdd, setQuickAddTodo })
 
 	return (
 		<>
