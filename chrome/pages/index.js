@@ -1,9 +1,5 @@
 // Packages
-import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-// Contexts
-import { useAuthCtx } from '-/auth'
-import { useLoadingCtx } from '-/loading'
 // Hooks
 import useIsSignedIn from '=/app/isSignedIn'
 import useSignout from '=/auth/signout'

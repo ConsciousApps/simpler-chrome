@@ -12,7 +12,6 @@ import {
 // Contexts
 import { useLoadingCtx } from '-/loading'
 // Functions
-import remove from '#/storage/remove'
 import magic from '#/auth/magic'
 // Styles
 import twButton from '@/button'
