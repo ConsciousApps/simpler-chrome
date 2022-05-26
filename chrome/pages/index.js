@@ -1,5 +1,7 @@
 // Packages
 import { useTranslation } from 'react-i18next'
+// Contexts
+import { useLoadingCtx } from '-/loading'
 // Hooks
 import useIsSignedIn from '=/app/isSignedIn'
 import useSignout from '=/auth/signout'
@@ -13,6 +15,8 @@ import Loading from '~/loading'
 
 const PagesHome = () => {
 	const { t } = useTranslation()
+
+	const { loading } = useLoadingCtx()
 
 	useIsSignedIn()
 
