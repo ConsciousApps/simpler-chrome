@@ -5,6 +5,7 @@ import useIsSignedIn from '=/app/isSignedIn'
 import useSignout from '=/auth/signout'
 // Layouts
 import Auth from '^/auth'
+import QuickAdd from '^/todo/quick'
 
 const PagesHome = () => {
 	const { authUser } = useAuthCtx()
@@ -13,7 +14,13 @@ const PagesHome = () => {
 
 	useSignout()
 
-	return <div className='p-4'>{!authUser && <Auth />}</div>
+	return (
+		<div className='p-4'>
+			{!authUser && <Auth />}
+
+			{authUser && <QuickAdd />}
+		</div>
+	)
 }
 
 export default PagesHome
