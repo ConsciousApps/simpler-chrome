@@ -44,7 +44,7 @@ const DesignLayoutsAuthForm = () => {
 				{...{
 					action: () => setSubmit(true),
 					primary: true,
-					text: authStage === 'signup' ? t(`Register`) : t(`Sign in`),
+					text: t(`Sign up or sign in`),
 					tw: 'w-full mt-4'
 				}}
 			/>

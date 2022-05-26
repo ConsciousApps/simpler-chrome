@@ -7,6 +7,8 @@ import Terms from '^/auth/terms'
 // Elements
 import Loading from '~/loading'
 import Logo from '~/logo'
+// Styles
+import twText from '@/text'
 
 const PagesHome = () => {
 	const { loading } = useLoadingCtx()
@@ -22,6 +24,17 @@ const PagesHome = () => {
 
 			{!loading && (
 				<>
+					<div>
+						<p className={twText({ type: 'small' })}>
+							<strong>simpler</strong> is a unique to-do app that helps you do what needs to get
+							done so you can focus on what truly matters.
+						</p>
+
+						<p className={twText({ type: 'small' })}>
+							Learn more at <span className={twText({ type: 'link' })}>useSimpler.com</span>
+						</p>
+					</div>
+
 					<Form />
 
 					<Providers />

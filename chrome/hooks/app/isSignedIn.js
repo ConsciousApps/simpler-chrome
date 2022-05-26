@@ -33,9 +33,9 @@ const HooksAppOnLoad = () => {
 			;(async () => {
 				const isSignedIn = await magicIsSignedIn()
 
-				if (isSignedIn) {
-					setLoading(true)
+				if (!isSignedIn) setLoading(false)
 
+				if (isSignedIn) {
 					setAuthIsSignedIn(true)
 
 					const token = await magicGetToken()
