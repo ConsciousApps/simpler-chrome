@@ -14,7 +14,7 @@ import dateTimeStampShort from '#/dates/dateTimeStampShort'
 // Constants
 import DATEDUETYPE from '$/schema/todo/dateDueType'
 // Layouts
-import DependenciesSelection from '^/todo/add/start/dependencies/Selection'
+import DependenciesSelection from '^/todo/quick/start/dependencies/Selection'
 import Due from '^/todo/quick/dates/Due'
 import Start from '^/todo/quick/dates/Start'
 // Elements
