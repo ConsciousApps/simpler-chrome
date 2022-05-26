@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"+/*": ["apis/*"],
+			"$/*": ["constants/*"],
+			"-/*": ["contexts/*"],
+			"~/*": ["design/elements/*"],
+			"^/*": ["design/layouts/*"],
+			"@/*": ["design/styles/*"],
+			"=/*": ["hooks/*"],
+			"#/*": ["lib/*"],
+		}
+	}
+}
