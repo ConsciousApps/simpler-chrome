@@ -31,7 +31,13 @@ const PagesHome = () => {
 						</p>
 
 						<p className={twText({ type: 'small' })}>
-							Learn more at <span className={twText({ type: 'link' })}>useSimpler.com</span>
+							Learn more at{' '}
+							<span
+								onClick={() => window.open(process.env.NEXT_PUBLIC_APP_DOMAIN, '_system')}
+								className={twText({ type: 'link' })}
+							>
+								useSimpler.com
+							</span>
 						</p>
 					</div>
 

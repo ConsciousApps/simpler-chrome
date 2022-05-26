@@ -27,7 +27,7 @@ const PagesHome = () => {
 	useSignout()
 
 	return (
-		<div className='w-96 p-4'>
+		<div className='w-96 p-8'>
 			{!authUser && <Auth />}
 
 			{authUser && quickAdd && <QuickAdd {...{ quickAdd, setQuickAdd, setQuickAddTodo }} />}
