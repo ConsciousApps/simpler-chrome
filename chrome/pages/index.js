@@ -1,3 +1,5 @@
+// Packages
+import { useState } from 'react'
 // Contexts
 import { useAuthCtx } from '-/auth'
 // Hooks
@@ -10,6 +12,8 @@ import QuickAdd from '^/todo/quick'
 const PagesHome = () => {
 	const { authUser } = useAuthCtx()
 
+	const [quickAdd, setQuickAdd] = useState(true)
+
 	useIsSignedIn()
 
 	useSignout()
@@ -18,7 +22,9 @@ const PagesHome = () => {
 		<div className='p-4'>
 			{!authUser && <Auth />}
 
-			{authUser && <QuickAdd />}
+			{authUser && <QuickAdd {...{ quickAdd, setQuickAdd }} />}
+
+			{!quickAdd && <div>Hello, world!</div>}
 		</div>
 	)
 }

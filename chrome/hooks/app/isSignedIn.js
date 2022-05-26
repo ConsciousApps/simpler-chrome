@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import useSWR from 'swr'
 // Contexts
 import { useAuthCtx } from '-/auth'
+import { useLoadingCtx } from '-/loading'
 // Functions
 import fetchApi from '#/fetch'
 import get from '#/storage/get'
@@ -16,11 +17,15 @@ const HooksAppOnLoad = () => {
 	const { authUser, authToken, setAuthIsSignedIn, setAuthStage, setAuthToken, setAuthUser } =
 		useAuthCtx()
 
+	const { setLoading } = useLoadingCtx()
+
 	const { data: apiUserGet } = useSWR(authToken ? `/api/user/get` : null, path =>
 		fetchApi({ isSWR: true, path })
 	)
 
 	useEffect(() => {
+		setLoading(true)
+
 		// Set it right away for a snappier UX, then verify via magic below
 		if (get('auth')) setAuthIsSignedIn(true)
 
@@ -29,6 +34,8 @@ const HooksAppOnLoad = () => {
 				const isSignedIn = await magicIsSignedIn()
 
 				if (isSignedIn) {
+					setLoading(true)
+
 					setAuthIsSignedIn(true)
 
 					const token = await magicGetToken()
@@ -36,13 +43,17 @@ const HooksAppOnLoad = () => {
 					setAuthToken(token)
 				}
 				// Not signed in
-				else setAuthStage('signout')
+				else if (get('auth')) setAuthStage('signout')
 			})()
 		}
 	}, [])
 
 	useEffect(() => {
-		if (apiUserGet) setAuthUser({ isNew: authUser?.isNew, ...apiUserGet })
+		if (apiUserGet) {
+			setAuthUser({ isNew: authUser?.isNew, ...apiUserGet })
+
+			setLoading(false)
+		}
 	}, [apiUserGet])
 }
 
