@@ -5,7 +5,8 @@
 		"build": "node ./scripts/build && next export && mv out/_next out/next && sed -i '' -e 's/\\/_next/\\.\\/next/g' out/**.html && mv out/index.html ../extension && rsync -va --delete-after out/next/ ../extension/next/ && rm -rf out && rsync -va --delete-after public/assets ../extension/",
 		"next": "node ./scripts/dev",
 		"start": "node ./scripts/build && node ./scripts/start",
-		"tailwind": "tailwindcss -i ./design/styles/input.css -o ./design/styles/output.css --watch"
+		"tailwind": "tailwindcss -i ./design/styles/input.css -o ./design/styles/output.css --watch",
+		"translate": "i18next --config lang.config.js"
 	},
 	"dependencies": {
 		"@fortawesome/fontawesome-svg-core": "^6.1.1",
@@ -20,6 +21,7 @@
 		"@prisma/client": "^3.14.0",
 		"@userlist/push": "^0.2.0",
 		"date-fns": "^2.28.0",
+		"i18next": "^21.8.4",
 		"magic-sdk": "^8.1.1",
 		"next": "latest",
 		"pluralize": "^8.0.0",
