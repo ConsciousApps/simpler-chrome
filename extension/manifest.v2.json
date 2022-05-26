@@ -1,10 +1,19 @@
 {
 	"name": "simpler | organize your life",
 	"description": "simpler is a unique to-do app that helps you do what needs to get done so you can focus on what truly matters.",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"manifest_version": 2,
 	"browser_action": {
 		"default_title": "simpler | organize your life",
 		"default_popup": "index.html"
+	},
+	"icons": {
+		"72": "/assets/icons/app-icon-72.png",
+		"96": "/assets/icons/app-icon-96.png",
+		"144": "/assets/icons/app-icon-144.png",
+		"152": "/assets/icons/app-icon-152.png",
+		"192": "/assets/icons/app-icon-192.png",
+		"512": "/assets/icons/app-icon-512.png",
+		"1024": "/assets/icons/app-icon-1024.png"
 	}
 }
