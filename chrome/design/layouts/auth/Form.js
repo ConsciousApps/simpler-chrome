@@ -44,7 +44,7 @@ const DesignLayoutsAuthForm = () => {
 				{...{
 					action: () => setSubmit(true),
 					primary: true,
-					text: t(`Sign up or sign in`),
+					text: t(`Sign up or sign in for free`),
 					tw: 'w-full mt-4'
 				}}
 			/>

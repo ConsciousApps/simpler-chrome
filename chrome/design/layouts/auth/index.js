@@ -2,7 +2,6 @@
 import { useLoadingCtx } from '-/loading'
 // Layouts
 import Form from '^/auth/Form'
-import Providers from '^/auth/Providers'
 import Terms from '^/auth/terms'
 // Elements
 import Loading from '~/loading'
@@ -42,8 +41,6 @@ const PagesHome = () => {
 					</div>
 
 					<Form />
-
-					<Providers />
 
 					<Terms />
 				</>
