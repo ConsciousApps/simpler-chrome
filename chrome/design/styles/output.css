@@ -1026,6 +1026,10 @@ select {
   max-height: 15rem;
 }
 
+.w-96 {
+  width: 24rem;
+}
+
 .w-9 {
   width: 2.25rem;
 }
@@ -1274,11 +1278,6 @@ select {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-bgPrimary {
-  --tw-bg-opacity: 1;
-  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
-}
-
 .bg-brand2 {
   --tw-bg-opacity: 1;
   background-color: rgb(219 39 119 / var(--tw-bg-opacity));
@@ -1289,9 +1288,9 @@ select {
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 
-.bg-inverted {
+.bg-bgPrimary {
   --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-20 {
@@ -1769,14 +1768,14 @@ select {
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
 }
 
-.dark .dark\:bg-bgPrimaryDark {
-  --tw-bg-opacity: 1;
-  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
-}
-
 .dark .dark\:bg-invertedDark {
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:bg-bgPrimaryDark {
+  --tw-bg-opacity: 1;
+  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
 }
 
 .dark .dark\:to-brand2Dark {

@@ -8,6 +8,8 @@ import { AuthProvider } from '-/auth'
 import { CircleProvider } from '-/circle'
 import { LoadingProvider } from '-/loading'
 import { TodoProvider } from '-/todo'
+// Languages
+import 'lang'
 
 const PagesApp = ({ Component, pageProps }) => {
 	return (
