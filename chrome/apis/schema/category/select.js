@@ -5,14 +5,13 @@ import circleSelectFields from '+/schema/circle/selectFields'
 import todoSelectFields from '+/schema/todo/selectFields'
 import userSelectFields from '+/schema/user/selectFields'
 
-const ApisSchemaUserSelect = {
-	...userSelectFields,
+const ApisSchemaCategorySelect = {
+	...categorySelectFields,
 	// --- RELATIONS ---
 	Activities: { select: activitySelectFields },
-	Categories: { select: categorySelectFields },
-	CirclesAdmin: { select: circleSelectFields },
-	CirclesMember: { select: circleSelectFields },
-	Todos: { select: todoSelectFields }
+	Circle: { select: circleSelectFields },
+	Todos: { select: todoSelectFields },
+	User: { select: userSelectFields }
 }
 
-export default ApisSchemaUserSelect
+export default ApisSchemaCategorySelect
