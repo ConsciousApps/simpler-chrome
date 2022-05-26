@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 // Contexts
+import { useAuthCtx } from '-/auth'
 import { useTodoCtx } from '-/todo'
 // Hooks
 import useGetCategories from '=/design/layouts/todo/getCategories'
@@ -28,6 +29,8 @@ import Input from '~/input'
 
 const DesignLayoutsTodoQuick = ({ quickAdd, setQuickAdd }) => {
 	const { t } = useTranslation()
+
+	const { setAuthStage } = useAuthCtx()
 
 	const { setTodoDurationEstimate, setTodoIsDraft, setTodoName, todoDurationEstimate, todoName } =
 		useTodoCtx()
@@ -116,8 +119,8 @@ const DesignLayoutsTodoQuick = ({ quickAdd, setQuickAdd }) => {
 
 			<Button
 				{...{
-					action: () => setQuickAdd(false),
-					text: t(`Clear`),
+					action: () => setAuthStage('signout'),
+					text: t(`Sign out`),
 					tw: 'mt-4 mx-auto'
 				}}
 			/>

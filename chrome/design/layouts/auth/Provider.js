@@ -47,7 +47,7 @@ const DesignLayoutsAuthProvider = ({ provider }) => {
 		>
 			<span className='sr-only'>{`${t(`Sign in with`)} ${provider}`}</span>
 
-			<div className='flex shrink-0 items-center justify-center mr-1'>
+			<div className='flex shrink-0 w-5 h-5 items-center justify-center mr-1'>
 				<FontAwesomeIcon icon={icon(provider)} size='lg' style={{ margin: 0, padding: 0 }} />
 			</div>
 

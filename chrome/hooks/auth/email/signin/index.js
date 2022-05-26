@@ -7,7 +7,7 @@ import { useLoadingCtx } from '-/loading'
 import magic from '#/auth/magic'
 
 const HooksAuthEmailSignin = ({ email, submit }) => {
-	const { setAuthStage } = useAuthCtx()
+	const { setAuthIsSignedIn, setAuthStage, setAuthToken, setAuthUser } = useAuthCtx()
 
 	const { setLoading } = useLoadingCtx()
 
@@ -18,7 +18,18 @@ const HooksAuthEmailSignin = ({ email, submit }) => {
 
 				const token = await magic.auth.loginWithEmailOTP({ email })
 
-				if (token) setAuthStage(null)
+				if (token) {
+					setAuthStage(null)
+
+					await getAndSetUser({
+						setAuthIsSignedIn,
+						setAuthStage,
+						setAuthToken,
+						setAuthUser,
+						setLoading,
+						token
+					})
+				}
 			})()
 		}
 	}, [submit])
