@@ -21,7 +21,7 @@ const DesignElementsButtonGroup = ({ buttons, disabled, setButtons }) => (
 						: 'cursor-pointer'
 				} text-primary dark:text-primaryDark px-4 py-1.5 border border-opacity-50 text-sm ${
 					x.selected
-						? 'z-1000 outline-none text-white bg-brand1 dark:bg-brand1Dark border-brand1 dark:border-brand1Dark'
+						? 'z-1000 outline-none text-inverted bg-brand1 dark:bg-brand1Dark border-brand1 dark:border-brand1Dark'
 						: `border-line`
 				}`}
 			>

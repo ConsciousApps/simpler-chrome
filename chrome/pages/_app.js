@@ -2,6 +2,7 @@
 import React from 'react'
 // Global CSS
 import '@/output.css'
+import '@/mobiscroll.react.min.css'
 // Providers
 import { AuthProvider } from '-/auth'
 import { CircleProvider } from '-/circle'
