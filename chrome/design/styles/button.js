@@ -10,7 +10,7 @@ const DesignStylesButton = ({
 } = {}) => {
 	const cursor = disabled ? 'cursor-not-allowed' : 'cursor-pointer'
 
-	const size = (Icon || mobile) && !text ? `rounded-full h-9 w-9` : `rounded-lg h-11 px-4`
+	const size = (Icon || mobile) && !text ? `rounded-full h-9 w-9` : `rounded-xl h-11 px-4`
 
 	const type = [
 		disabled && primary

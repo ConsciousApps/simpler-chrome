@@ -42,7 +42,7 @@ const DesignLayoutsAuthForm = () => {
 
 			<Button
 				{...{
-					action: async () => setSubmit(true),
+					action: () => setSubmit(true),
 					primary: true,
 					text: authStage === 'signup' ? t(`Register`) : t(`Sign in`),
 					tw: 'w-full mt-4'

@@ -946,6 +946,14 @@ select {
   margin-top: 2rem;
 }
 
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mr-3 {
+  margin-right: 0.75rem;
+}
+
 .block {
   display: block;
 }
@@ -1102,6 +1110,10 @@ select {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.cursor-notAllowed {
+  cursor: not-allowed;
 }
 
 .select-none {
@@ -1346,6 +1358,11 @@ select {
 .py-1\.5 {
   padding-top: 0.375rem;
   padding-bottom: 0.375rem;
+}
+
+.px-2\.5 {
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
 }
 
 .pl-3 {

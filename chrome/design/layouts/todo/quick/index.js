@@ -1,8 +1,8 @@
 // Packages
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { CollectionIcon } from '@heroicons/react/solid'
 // Contexts
-import { useAuthCtx } from '-/auth'
 import { useTodoCtx } from '-/todo'
 // Hooks
 import useGetCategories from '=/design/layouts/todo/getCategories'
@@ -25,12 +25,11 @@ import Modifiers from '^/todo/quick/modifiers'
 import Notes from '^/todo/quick/notes'
 // Elements
 import Button from '~/button'
+import ButtonSmall from '~/button/small'
 import Input from '~/input'
 
-const DesignLayoutsTodoQuick = ({ quickAdd, setQuickAdd }) => {
+const DesignLayoutsTodoQuick = ({ quickAdd, setQuickAdd, setQuickAddTodo }) => {
 	const { t } = useTranslation()
-
-	const { setAuthStage } = useAuthCtx()
 
 	const { setTodoDurationEstimate, setTodoIsDraft, setTodoName, todoDurationEstimate, todoName } =
 		useTodoCtx()
@@ -72,7 +71,7 @@ const DesignLayoutsTodoQuick = ({ quickAdd, setQuickAdd }) => {
 
 	const { data: isError } = useIsQuickAddError()
 
-	useQuickSave({ quickAdd, setQuickAdd })
+	useQuickSave({ quickAdd, setQuickAdd, setQuickAddTodo })
 
 	return (
 		<>
@@ -117,13 +116,15 @@ const DesignLayoutsTodoQuick = ({ quickAdd, setQuickAdd }) => {
 				}}
 			/>
 
-			<Button
-				{...{
-					action: () => setAuthStage('signout'),
-					text: t(`Sign out`),
-					tw: 'mt-4 mx-auto'
-				}}
-			/>
+			<div className='flex justify-center mt-4'>
+				<ButtonSmall
+					{...{
+						action: () => window.open(process.env.NEXT_PUBLIC_APP_DOMAIN, '_system'),
+						Icon: CollectionIcon,
+						text: t(`See your list`)
+					}}
+				/>
+			</div>
 		</>
 	)
 }
