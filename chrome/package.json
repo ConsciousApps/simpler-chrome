@@ -18,6 +18,7 @@
 		"@magic-sdk/admin": "^1.4.1",
 		"@mobiscroll/react": "file:./scripts/build/mobiscroll-react-v5.15.2.tgz",
 		"@prisma/client": "^3.14.0",
+		"@userlist/push": "^0.2.0",
 		"date-fns": "^2.28.0",
 		"magic-sdk": "^8.1.1",
 		"next": "latest",

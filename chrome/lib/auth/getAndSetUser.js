@@ -3,6 +3,7 @@ import fetchApi from '#/fetch'
 import set from '#/storage/set'
 
 const LibAuthGetAndSetUser = async ({
+	router,
 	setAuthIsSignedIn,
 	setAuthStage,
 	setAuthToken,
@@ -27,6 +28,8 @@ const LibAuthGetAndSetUser = async ({
 		setAuthIsSignedIn(true)
 
 		setLoading(false)
+
+		if (router) router.push('/')
 	}
 	// Unauthorized
 	else setAuthStage('signout')
