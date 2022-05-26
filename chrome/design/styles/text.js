@@ -29,7 +29,7 @@ const DesignStylesText = ({
 	const sizing = [
 		size === 'huge' ? 'text-xl' : null,
 		size === 'large' ? 'text-xl md:text-lg' : null,
-		size === 'small' ? 'text-base md:text-sm' : null,
+		size === 'small' ? 'text-sm' : null,
 		size === 'tiny' ? 'text-sm md:text-xs' : null,
 		'text-base'
 	].find(x => x)

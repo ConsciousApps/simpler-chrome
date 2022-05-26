@@ -1,5 +1,3 @@
-// Packages
-import { useTranslation } from 'react-i18next'
 // Contexts
 import { useLoadingCtx } from '-/loading'
 // Hooks
@@ -7,15 +5,13 @@ import useIsSignedIn from '=/app/isSignedIn'
 import useSignout from '=/auth/signout'
 // Layouts
 import Form from '^/auth/Form'
-import Divider from '^/auth/Divider'
 import Providers from '^/auth/Providers'
 import Terms from '^/auth/terms'
 // Elements
 import Loading from '~/loading'
+import Logo from '~/logo'
 
 const PagesHome = () => {
-	const { t } = useTranslation()
-
 	const { loading } = useLoadingCtx()
 
 	useIsSignedIn()
@@ -23,14 +19,17 @@ const PagesHome = () => {
 	useSignout()
 
 	return (
-		<>
-			<h3>{t(`Create a free account`)}</h3>
+		<div className='p-4'>
+			<div
+				className='cursor-pointer'
+				onClick={() => window.open(process.env.NEXT_PUBLIC_APP_DOMAIN, '_system')}
+			>
+				<Logo tw='mx-auto w-auto h-8 mb-4' />
+			</div>
 
 			{!loading && (
 				<>
 					<Form />
-
-					<Divider />
 
 					<Providers />
 
@@ -43,7 +42,7 @@ const PagesHome = () => {
 					<Loading />
 				</div>
 			)}
-		</>
+		</div>
 	)
 }
 
