@@ -1,14 +1,18 @@
 // Packages
-const shell = require('shelljs')
+const selectEnvOrDb = require('../utils/selectEnvOrDb.js')
+const setUser = require('../utils/setUser.js')
+const shellExec = require('../utils/shellExec.js')
 
 const ScriptBuild = async () => {
-	const env = 'dev'
+	await setUser()
 
-	shell.exec(`doppler setup --config ${env}`)
+	const { env } = await selectEnvOrDb()
 
-	shell.exec(`doppler run -- prisma generate --schema=./prisma/${env}/schema.prisma`)
+	shellExec(`doppler setup --config ${env}`)
 
-	shell.exec(`doppler run -- next build`)
+	shellExec(`doppler run -- prisma generate --schema=./prisma/${env}/schema.prisma`)
+
+	shellExec(`doppler run -- next build`)
 }
 
 ScriptBuild()
