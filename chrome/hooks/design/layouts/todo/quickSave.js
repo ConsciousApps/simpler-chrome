@@ -8,7 +8,6 @@ import useGetTodoUpsertData from '=/design/layouts/todos/getUpsertData'
 import fetchApi from '#/fetch'
 
 const HooksDesignLayoutsTodoQuickSave = ({ quickAdd, setQuickAdd }) => {
-
 	const { todoIsDraft } = useTodoCtx()
 
 	const { data: upsertData } = useGetTodoUpsertData()
@@ -16,11 +15,7 @@ const HooksDesignLayoutsTodoQuickSave = ({ quickAdd, setQuickAdd }) => {
 	useEffect(() => {
 		if (quickAdd && !todoIsDraft) {
 			setQuickAdd(false)
-
-			await fetchApi({
-				path: `/api/todo/upsert`,
-				data: upsertData
-			})
+			;(async () => await fetchApi({ path: `/api/todo/upsert`, data: upsertData }))()
 		}
 	}, [todoIsDraft])
 }
