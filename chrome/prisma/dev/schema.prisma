@@ -15,7 +15,7 @@ model Activity {
   id         String    @id @default(uuid())
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
-  timezone   String?
+  timeZone   String?
   // --- PUBLIC ID ---
   activityId String    @unique
   // --- RELATIONS ---
@@ -49,6 +49,7 @@ model Category {
   User       User       @relation("RUserToCategories", fields: [userId], references: [userId])
   userId     String
   // --- FIELDS ---
+  calConnect Boolean    @default(false)
   color      String?
   isArchived Boolean    @default(false)
   isDeleted  Boolean    @default(false)
@@ -73,7 +74,8 @@ model Circle {
   Activities   Activity[] @relation("OCircleToActivities")
   Categories   Category[] @relation("OCircleToCategories")
   Todos        Todo[]     @relation("OCircleToTodos")
-  UserAdmins   User[]     @relation("CirclesToUserAdmins")
+  UserAdmin    User?      @relation("CirclesToUserAdmin", fields: [userAdminId], references: [userId])
+  userAdminId  String?
   UserMembers  User[]     @relation("CirclesToUserMembers")
   UserRequests User[]     @relation("CirclesToUserRequests")
   // --- FIELDS ---
@@ -96,6 +98,8 @@ model Todo {
   User                        User       @relation("RUserToTodos", fields: [userId], references: [userId])
   userId                      String
   // --- FIELDS ---
+  calEventId                  String?    @unique // Calendar event Id
+  calEventLink                String?    @unique // Calendar event HTML link
   dateDue                     DateTime?
   dateDueTimezone             String?
   dateDueType                 String     @default("someday")
@@ -106,6 +110,9 @@ model Todo {
   dateStartSuccessors         Todo[]     @relation("DateStartTodos")
   dateStartTimezone           String?
   durationEstimate            Int? // 5, 15, 30, 60, 61
+  imageAuthor                 String?
+  imageLink                   String?
+  imageUrl                    String?
   isArchived                  Boolean    @default(false)
   isDeleted                   Boolean    @default(false)
   isDraft                     Boolean    @default(true)
@@ -115,7 +122,9 @@ model Todo {
   isTutorial                  Boolean    @default(false)
   name                        String?
   notes                       String?    @db.Text
+  repeats                     Json?
   sortOrder                   Int?
+  urls                        Json?
 
   @@index([circleId])
   @@index([userId])
@@ -140,7 +149,7 @@ model User {
   // --- RELATIONS ---
   Activities       Activity[]  @relation("RUserToActivities")
   Categories       Category[]  @relation("RUserToCategories")
-  CirclesAdmin     Circle[]    @relation("CirclesToUserAdmins")
+  CirclesAdmin     Circle[]    @relation("CirclesToUserAdmin")
   CirclesInvitee   Circle[]    @relation("CirclesToUserRequests")
   CirclesMember    Circle[]    @relation("CirclesToUserMembers")
   Todos            Todo[]      @relation("RUserToTodos")
@@ -149,13 +158,18 @@ model User {
   // --- FIELDS ---
   authProvider     String?
   authUsername     String?
+  calAccessToken   String?
+  calId            String? // simpler calendar id
+  calRefreshToken  String?
   email            String      @unique
   nameFirst        String?
   nameLast         String?
   paid             Boolean     @default(false)
+  paidPromo        String?
   paidTier         String?     @default("free")
   profile          String?
   settings         Json? // `{ categories: 'Work', celebrate: true, focusMode: true, important: false, timesensitive: true, zen: false }
+  state            String?     @unique
   stripeCustomerId String?
 }
 
