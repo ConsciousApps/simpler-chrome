@@ -2,7 +2,6 @@
 const inquirer = require('inquirer')
 // Utilities
 const colors = require('./colors.js')
-const prismaGenerate = require('./prismaGenerate.js')
 const shellExec = require('./shellExec.js')
 
 const ScriptUtilsSelectEnvOrDb = async ({ isDev, type = 'env' } = { type: 'env' }) => {
@@ -67,8 +66,6 @@ const ScriptUtilsSelectEnvOrDb = async ({ isDev, type = 'env' } = { type: 'env' 
 	}
 	// New environment
 	else {
-		await prismaGenerate(env)
-
 		shellExec(`doppler configure set enclave.config=${env}`)
 
 		console.info(

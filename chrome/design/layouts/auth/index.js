@@ -1,56 +1,59 @@
-// Contexts
-import { useLoadingCtx } from '-/loading'
+// Packages
+import { useRouter } from 'next/router'
 // Layouts
-import Form from '^/auth/Form'
 import Terms from '^/auth/terms'
 // Elements
-import Loading from '~/loading'
+import Button from '~/button'
 import Logo from '~/logo'
 // Styles
 import twText from '@/text'
 
 const PagesHome = () => {
-	const { loading } = useLoadingCtx()
+	const router = useRouter()
 
 	return (
 		<>
 			<div
 				className='cursor-pointer text-brand1'
-				onClick={() => window.open(process.env.NEXT_PUBLIC_APP_URL, '_system')}
+				onClick={() => window.open(process.env.NEXT_PUBLIC_APP_DOMAIN, '_system')}
 			>
 				<Logo />
 			</div>
 
-			{!loading && (
-				<>
-					<div>
-						<p className={twText({ type: 'small' })}>
-							<strong>simpler</strong> is a unique to-do app that helps you do what needs to get
-							done so you can focus on what truly matters.
-						</p>
+			<div className='flex flex-col items-center'>
+				<p className={twText({ type: 'small' })}>
+					<strong>simpler</strong> is a productivity app that helps you prioritize what needs to get
+					done so you can focus on what truly matters.
+				</p>
 
-						<p className={twText({ type: 'small' })}>
-							Learn more at{' '}
-							<span
-								onClick={() => window.open(process.env.NEXT_PUBLIC_APP_URL, '_system')}
-								className={twText({ type: 'link' })}
-							>
-								useSimpler.com
-							</span>
-						</p>
-					</div>
+				<p className={twText({ type: 'small' })}>
+					Learn more at{' '}
+					<span
+						onClick={() => window.open(process.env.NEXT_PUBLIC_APP_DOMAIN, '_system')}
+						className={twText({ type: 'link' })}
+					>
+						{process.env.NEXT_PUBLIC_APP_DOMAIN}
+					</span>
+				</p>
 
-					<Form />
-
-					<Terms />
-				</>
-			)}
-
-			{loading && (
-				<div className='relative h-96 flex justify-center items-center'>
-					<Loading />
+				<div className='my-4'>
+					<Button
+						action={() => router.push('https://accounts.simplerlist.com/sign-up')}
+						primary={true}
+						text='Sign up today'
+					/>
 				</div>
-			)}
+
+				<Button
+					action={() => router.push('https://accounts.simplerlist.com/sign-in')}
+					primary={false}
+					text='Sign in'
+				/>
+
+				<div className='mt-4'>
+					<Terms />
+				</div>
+			</div>
 		</>
 	)
 }

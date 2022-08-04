@@ -10,8 +10,6 @@ const ScriptBuild = async () => {
 
 	shellExec(`doppler setup --config ${env}`)
 
-	shellExec(`doppler run -- prisma generate --schema=./prisma/${env}/schema.prisma`)
-
 	shellExec(`doppler run -- next build`)
 }
 
