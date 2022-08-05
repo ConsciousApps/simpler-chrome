@@ -1,0 +1,9 @@
+chrome/.next
+chrome/.swc
+chrome/yarn.lock
+chrome/node_modules
+extension/index.html
+extension/assets
+extension/next
+.DS_Store
+extension.zip
