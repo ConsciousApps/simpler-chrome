@@ -8,7 +8,7 @@ import validator from '#/utils/validator'
 import Button from '~/button'
 import Input from '~/input'
 
-const DesignLayoutsAuthForm = () => {
+const DesignLayoutsAuthForm = ({ mode }) => {
 	const [email, setEmail] = useState(null)
 	const [submit, setSubmit] = useState(false)
 
@@ -37,7 +37,7 @@ const DesignLayoutsAuthForm = () => {
 				{...{
 					action: () => setSubmit(true),
 					primary: true,
-					text: 'Sign up',
+					text: mode === 'signin' ? 'Sign In' : 'Sign Up',
 					tw: 'w-full mt-4'
 				}}
 			/>

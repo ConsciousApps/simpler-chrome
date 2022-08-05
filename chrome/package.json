@@ -7,8 +7,7 @@
 		"start": "node ./scripts/build && node ./scripts/start",
 		"git:clean": "git clean -xdf && yarn",
 		"git:unused": "next-unused",
-		"tailwind": "tailwindcss -i ./design/styles/input.css -o ./design/styles/output.css --watch",
-		"translate": "i18next --config lang.config.js"
+		"tailwind": "tailwindcss -i ./design/styles/input.css -o ./design/styles/output.css --watch"
 	},
 	"dependencies": {
 		"@clerk/nextjs": "^3.8.3",
@@ -16,11 +15,9 @@
 		"@fortawesome/free-brands-svg-icons": "^6.1.2",
 		"@fortawesome/react-fontawesome": "^0.2.0",
 		"@heroicons/react": "^1.0.6",
-		"i18next": "^21.8.12",
 		"next": "^12.2.0",
 		"react": "^18.2.0",
-		"react-dom": "^18.2.0",
-		"react-i18next": "^11.17.4"
+		"react-dom": "^18.2.0"
 	},
 	"devDependencies": {
 		"@tailwindcss/aspect-ratio": "^0.4.0",
