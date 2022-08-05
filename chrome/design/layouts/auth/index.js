@@ -32,23 +32,15 @@ const PagesHome = () => {
 						onClick={() => window.open(process.env.NEXT_PUBLIC_APP_DOMAIN, '_system')}
 						className={twText({ type: 'link' })}
 					>
-						{process.env.NEXT_PUBLIC_APP_DOMAIN}
+						simplerlist.com
 					</span>
 				</p>
 
 				<div className='my-4'>
-					<Button
-						action={() => router.push('https://accounts.simplerlist.com/sign-up')}
-						primary={true}
-						text='Sign up today'
-					/>
+					<Button action={() => router.push('/signup')} primary={true} text='Sign up today' />
 				</div>
 
-				<Button
-					action={() => router.push('https://accounts.simplerlist.com/sign-in')}
-					primary={false}
-					text='Sign in'
-				/>
+				<Button action={() => router.push('/signin')} primary={false} text='Sign in' />
 
 				<div className='mt-4'>
 					<Terms />

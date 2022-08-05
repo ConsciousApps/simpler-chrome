@@ -2,7 +2,7 @@
 import Auth from '^/auth'
 
 const PagesHome = () => (
-	<div className='w-full p-4'>
+	<div className='w-80 mx-auto p-4'>
 		<Auth />
 	</div>
 )
