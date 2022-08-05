@@ -35,7 +35,7 @@ const DesignLayoutsAuthFormOtp = ({ code, email, setCode, setSubmitCode }) => (
 				disabled: !validator.code(code),
 				primary: true,
 				text: 'Confirm',
-				tw: 'w-full mt-8'
+				tw: 'w-full mt-4'
 			}}
 		/>
 	</>

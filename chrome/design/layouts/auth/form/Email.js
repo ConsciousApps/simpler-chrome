@@ -31,7 +31,7 @@ const DesignLayoutsAuthFormEmail = ({ email, mode, setEmail, setSubmitEmail }) =
 				disabled: !validator.email(email),
 				primary: true,
 				text: mode === 'signin' ? 'Sign In' : 'Sign Up',
-				tw: 'w-full mt-8'
+				tw: 'w-full mt-4'
 			}}
 		/>
 	</>
