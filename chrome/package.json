@@ -12,6 +12,10 @@
 	},
 	"dependencies": {
 		"@clerk/nextjs": "^3.8.3",
+		"@fortawesome/fontawesome-svg-core": "^6.1.2",
+		"@fortawesome/free-brands-svg-icons": "^6.1.2",
+		"@fortawesome/react-fontawesome": "^0.2.0",
+		"@heroicons/react": "^1.0.6",
 		"i18next": "^21.8.12",
 		"next": "^12.2.0",
 		"react": "^18.2.0",

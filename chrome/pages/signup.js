@@ -1,5 +1,6 @@
-import { SignUp } from '@clerk/nextjs'
+// Layouts
+import Auth from '^/auth'
 
-const PagesSignup = () => <SignUp signInUrl='/signin' />
+const PagesSignup = () => <Auth />
 
 export default PagesSignup

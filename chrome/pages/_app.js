@@ -8,7 +8,9 @@ import 'lang'
 
 const PagesApp = ({ Component, pageProps }) => (
 	<ClerkProvider {...pageProps}>
-		<Component {...pageProps} />
+		<div className='w-80 mx-auto p-4'>
+			<Component {...pageProps} />
+		</div>
 	</ClerkProvider>
 )
 
