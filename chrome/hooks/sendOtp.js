@@ -14,12 +14,16 @@ const HooksSendOtp = ({ email, setStage, submitEmail }) => {
 					factor => factor.strategy === 'email_code'
 				)
 
-				await signInAttempt.prepareFirstFactor({
-					strategy: 'email_code',
-					email_address_id: emailCodeFactor.email_address_id
-				})
+				try {
+					await signInAttempt.prepareFirstFactor({
+						strategy: 'email_code',
+						emailAddressId: emailCodeFactor.emailAddressId
+					})
 
-				setStage('otp')
+					setStage('otp')
+				} catch (err) {
+					console.error(err)
+				}
 			}
 
 			sendOtp()

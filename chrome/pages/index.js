@@ -1,5 +1,5 @@
 // Packages
-import { SignedIn, SignedOut } from '@clerk/nextjs'
+import { SignedIn, SignedOut, useAuth } from '@clerk/nextjs'
 // Packages
 import { useRouter } from 'next/router'
 // Elements
@@ -11,9 +11,13 @@ import twText from '@/text'
 const PagesHome = () => {
 	const router = useRouter()
 
+	const { signOut } = useAuth()
+
 	return (
 		<>
-			<SignedIn>Hello, world</SignedIn>
+			<SignedIn>
+				<span onClick={() => signOut()}>sign out</span>
+			</SignedIn>
 
 			<SignedOut>
 				<div

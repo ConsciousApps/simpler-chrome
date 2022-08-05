@@ -15,10 +15,14 @@ const HooksVerifyOtp = ({ code, submitCode }) => {
 			const verifyOtp = async () => {
 				let signUpAttempt
 
-				signUpAttempt = await signIn.attemptFirstFactor({
-					strategy: 'email_code',
-					code
-				})
+				try {
+					signUpAttempt = await signIn.attemptFirstFactor({
+						strategy: 'email_code',
+						code
+					})
+				} catch (err) {
+					console.error(err)
+				}
 
 				if (signUpAttempt?.status === 'complete')
 					clerk.setSession(signUpAttempt.createdSessionId, () => router.push('/'))

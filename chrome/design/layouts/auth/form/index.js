@@ -7,18 +7,19 @@ import useVerifyOtp from '=/verifyOtp'
 import Email from '^/auth/form/Email'
 import Otp from '^/auth/form/Otp'
 
-const DesignLayoutsAuthForm = ({ mode }) => {
+const DesignLayoutsAuthForm = ({ mode, stage, setStage }) => {
 	const [code, setCode] = useState(null)
 	const [email, setEmail] = useState(null)
 	const [submitEmail, setSubmitEmail] = useState(false)
 	const [submitCode, setSubmitCode] = useState(null)
-	const [stage, setStage] = useState('email')
 
 	useSendOtp({ email, setStage, submitEmail })
-	useVerifyOtp({ code, setSubmitCode })
+
+	useVerifyOtp({ code, submitCode })
 
 	if (stage === 'email') return <Email {...{ email, mode, setEmail, setSubmitEmail }} />
-	else if (stage === 'otp') return <Otp {...{ code, email, setCode, setSubmitCode }} />
+
+	if (stage === 'otp') return <Otp {...{ code, email, setCode, setSubmitCode }} />
 
 	return null
 }
