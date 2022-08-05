@@ -2,12 +2,12 @@
 import { useEffect } from 'react'
 import { useSignIn } from '@clerk/nextjs'
 
-const HooksSignInViaEmail = ({ email, setStage, submit }) => {
+const HooksSendOtp = ({ email, setStage, submitEmail }) => {
 	const { signIn } = useSignIn()
 
 	useEffect(() => {
-		if (email) {
-			const sendOTP = async () => {
+		if (email && submitEmail) {
+			const sendOtp = async () => {
 				const signInAttempt = await signIn.create({ identifier: email })
 
 				const emailCodeFactor = signInAttempt.supportedFirstFactors.find(
@@ -22,9 +22,9 @@ const HooksSignInViaEmail = ({ email, setStage, submit }) => {
 				setStage('otp')
 			}
 
-			sendOTP()
+			sendOtp()
 		}
-	}, [submit])
+	}, [submitEmail])
 }
 
-export default HooksSignInViaEmail
+export default HooksSendOtp

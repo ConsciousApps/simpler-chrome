@@ -4,7 +4,7 @@ import validator from '#/utils/validator'
 import Button from '~/button'
 import Input from '~/input'
 
-const DesignLayoutsAuthFormEmail = ({ email, mode, setEmail, setSubmit }) => (
+const DesignLayoutsAuthFormEmail = ({ email, mode, setEmail, setSubmitEmail }) => (
 	<>
 		<Input
 			{...{
@@ -15,7 +15,7 @@ const DesignLayoutsAuthFormEmail = ({ email, mode, setEmail, setSubmit }) => (
 					if (e.code === 'Enter' && validator.email(email)) {
 						e.preventDefault()
 
-						setSubmit(true)
+						setSubmitEmail(true)
 					}
 				},
 				type: 'email',
@@ -26,7 +26,7 @@ const DesignLayoutsAuthFormEmail = ({ email, mode, setEmail, setSubmit }) => (
 		<Button
 			{...{
 				action: () => {
-					if (validator.email(email)) setSubmit(true)
+					if (validator.email(email)) setSubmitEmail(true)
 				},
 				primary: true,
 				text: mode === 'signin' ? 'Sign In' : 'Sign Up',

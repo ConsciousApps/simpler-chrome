@@ -4,36 +4,40 @@ import validator from '#/utils/validator'
 import Button from '~/button'
 import Input from '~/input'
 
-const DesignLayoutsAuthFormOtp = ({ email, mode, setEmail, setSubmit }) => (
-	<>
-		<Input
-			{...{
-				label: 'Email',
-				name: 'email',
-				onChange: ({ value }) => setEmail(value),
-				onKeyPress: e => {
-					if (e.code === 'Enter' && validator.email(email)) {
-						e.preventDefault()
+const DesignLayoutsAuthFormOtp = ({ code, email, mode, setCode, setSubmitCode }) => {
+	return (
+		<>
+			<span>Please enter the 6-digit code that was just sent to {email}.</span>
 
-						setSubmit(true)
-					}
-				},
-				type: 'email',
-				value: email || ''
-			}}
-		/>
+			<Input
+				{...{
+					label: 'Code',
+					name: 'code',
+					onChange: ({ value }) => setCode(value),
+					onKeyPress: e => {
+						if (e.code === 'Enter' && validator.code(code)) {
+							e.preventDefault()
 
-		<Button
-			{...{
-				action: () => {
-					if (validator.email(email)) setSubmit(true)
-				},
-				primary: true,
-				text: mode === 'signin' ? 'Sign In' : 'Sign Up',
-				tw: 'w-full mt-4'
-			}}
-		/>
-	</>
-)
+							setSubmitCode(true)
+						}
+					},
+					type: 'text',
+					value: code || ''
+				}}
+			/>
+
+			<Button
+				{...{
+					action: () => {
+						if (validator.code(code)) setSubmitCode(true)
+					},
+					primary: true,
+					text: mode === 'signin' ? 'Sign In' : 'Sign Up',
+					tw: 'w-full mt-4'
+				}}
+			/>
+		</>
+	)
+}
 
 export default DesignLayoutsAuthFormOtp

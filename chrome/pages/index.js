@@ -40,7 +40,7 @@ const PagesHome = () => {
 					</p>
 
 					<div className='my-4'>
-						<Button action={() => router.push('/signup')} primary={true} text='Sign up today' />
+						<Button action={() => router.push('/signup')} primary={true} text='Sign up' />
 					</div>
 
 					<Button action={() => router.push('/signin')} primary={false} text='Sign in' />
