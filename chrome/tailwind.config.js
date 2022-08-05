@@ -46,7 +46,7 @@ module.exports = {
 		},
 		extend: {
 			backgroundImage: {
-				loading: "url('/assets/images/general/loading-small.svg')"
+				loading: "url('/assets/images/loading-small.svg')"
 			}
 		},
 		fontFamily: {

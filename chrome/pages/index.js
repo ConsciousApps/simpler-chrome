@@ -2,8 +2,6 @@
 import { SignedIn, SignedOut } from '@clerk/nextjs'
 // Packages
 import { useRouter } from 'next/router'
-// Layouts
-import Terms from '^/auth/terms'
 // Elements
 import Button from '~/button'
 import Logo from '~/logo'
@@ -19,7 +17,7 @@ const PagesHome = () => {
 
 			<SignedOut>
 				<div
-					className='cursor-pointer text-brand1'
+					className='cursor-pointer mt-4 mb-2'
 					onClick={() => window.open(process.env.NEXT_PUBLIC_APP_DOMAIN, '_system')}
 				>
 					<Logo />
@@ -46,10 +44,6 @@ const PagesHome = () => {
 					</div>
 
 					<Button action={() => router.push('/signin')} primary={false} text='Sign in' />
-
-					<div className='mt-4'>
-						<Terms />
-					</div>
 				</div>
 			</SignedOut>
 		</>
