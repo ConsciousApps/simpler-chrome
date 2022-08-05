@@ -7,6 +7,7 @@
 		"default_title": "simpler | prioritize your life",
 		"default_popup": "index.html"
 	},
+	"content_security_policy": "script-src 'self' https://clerk.simplerlist.com/; object-src 'self'",
 	"icons": {
 		"72": "/assets/icons/app-icon-72.png",
 		"96": "/assets/icons/app-icon-96.png",
