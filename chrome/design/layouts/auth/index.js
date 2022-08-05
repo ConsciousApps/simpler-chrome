@@ -1,7 +1,7 @@
 // Packages
 import { useRouter } from 'next/router'
 // Layouts
-import Form from '^/auth/Form'
+import Form from '^/auth/form'
 import Providers from '^/auth/Providers'
 import Terms from '^/auth/terms'
 // Elements
