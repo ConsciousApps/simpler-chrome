@@ -33,7 +33,7 @@ const DesignStylesText = ({
 		size === 'huge' ? 'text-xl' : null,
 		size === 'large' ? 'text-xl md:text-lg' : null,
 		size === 'small' ? 'text-sm' : null,
-		size === 'tiny' ? 'text-sm md:text-xs' : null,
+		size === 'tiny' ? 'text-xs' : null,
 		'text-base'
 	].find(x => x)
 

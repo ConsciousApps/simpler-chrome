@@ -10,15 +10,9 @@ const DesignLayoutsAuthProviders = () => {
 	]
 
 	return (
-		<>
-			<div className='grid grid-cols-3 gap-3'>
-				{providers.map((provider, i) => i <= 2 && <Provider {...{ key: i, provider }} />)}
-			</div>
-
-			<div className='mt-3 grid grid-cols-3 gap-3'>
-				{providers.map((provider, i) => i > 2 && <Provider {...{ key: i, provider }} />)}
-			</div>
-		</>
+		<div className='flex flex-col'>
+			{providers.map((provider, i) => i <= 2 && <Provider {...{ key: i, provider }} />)}
+		</div>
 	)
 }
 

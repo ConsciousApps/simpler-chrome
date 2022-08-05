@@ -12,7 +12,7 @@ const DesignLayoutsAuthProvider = ({ provider }) => {
 
 	return (
 		<div
-			className={`flex items-center ${twButton({ light: true })}`}
+			className={`flex items-center my-3 text-secondary dark:text-secondaryDark mx-auto cursor-pointer hover:text-primary dark:hover:text-primaryDark`}
 			onClick={() => socialSignin(provider?.name.toLowerCase())}
 		>
 			<span className='sr-only'>{`${t(`Sign in with`)} ${provider?.name}`}</span>
@@ -21,7 +21,7 @@ const DesignLayoutsAuthProvider = ({ provider }) => {
 				<FontAwesomeIcon icon={provider?.icon} style={{ width: '24px', height: '24px' }} />
 			</div>
 
-			<div className='block text-xs sm:text-sm ml-2'>{provider?.name}</div>
+			<div className='block text-lg font-medium ml-2'>{provider?.name}</div>
 		</div>
 	)
 }

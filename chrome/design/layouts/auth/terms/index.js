@@ -7,20 +7,29 @@ const DesignLayoutsAuthTerms = () => {
 	const { t } = useTranslation()
 
 	return (
-		<p className='text-sm text-secondary dark:text-secondaryDark sm:mt-4'>
+		<p className='mt-4 text-xs text-secondary dark:text-secondaryDark sm:mt-4'>
 			{t(`We respect your privacy. By signing in, you agree to our`)}{' '}
 			<span
-				onClick={() => window.open('/legal/terms', '_system')}
-				className={twText({ size: 'small', type: 'link' })}
+				onClick={() => window.open(`${process.env.NEXT_PUBLIC_APP_DOMAIN}/legal/terms`, '_system')}
+				className={twText({ size: 'tiny', type: 'link' })}
 			>
 				{t(`terms of service`)}
 			</span>{' '}
 			{t(`and`)}{' '}
 			<span
-				onClick={() => window.open('/legal/privacy', '_system')}
-				className={twText({ size: 'small', type: 'link' })}
+				onClick={() =>
+					window.open(`${process.env.NEXT_PUBLIC_APP_DOMAIN}/legal/privacy`, '_system')
+				}
+				className={twText({ size: 'tiny', type: 'link' })}
 			>
 				{t(`privacy policy`)}
+			</span>
+			. For more information, please visit{' '}
+			<span
+				onClick={() => window.open(process.env.NEXT_PUBLIC_APP_DOMAIN, '_system')}
+				className={twText({ size: 'tiny', type: 'link' })}
+			>
+				simpler
 			</span>
 			.
 		</p>
