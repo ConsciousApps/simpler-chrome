@@ -10,6 +10,7 @@
 		"tailwind": "tailwindcss -i ./design/styles/input.css -o ./design/styles/output.css --watch"
 	},
 	"dependencies": {
+		"@clerk/clerk-js": "^4.0.0",
 		"@clerk/nextjs": "^4.0.0",
 		"@fortawesome/fontawesome-svg-core": "^6.1.2",
 		"@fortawesome/free-brands-svg-icons": "^6.1.2",
