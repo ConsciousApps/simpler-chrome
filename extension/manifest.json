@@ -10,6 +10,9 @@
 	"content_security_policy": {
 		"extension_pages": "script-src 'self'; object-src 'self'"
 	},
+	"background": {
+		"type": "module"
+	},
 	"icons": {
 		"72": "/assets/icons/app-icon-72.png",
 		"96": "/assets/icons/app-icon-96.png",
