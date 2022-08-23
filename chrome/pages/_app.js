@@ -5,12 +5,6 @@ import { ClerkProvider as ClerkProviderExtension } from '=/ClerkProvider'
 // Global CSS
 import '@/output.css'
 
-const Simpler = ({ Component }) => (
-	<div className='w-80'>
-		<Component />
-	</div>
-)
-
 export default ({ Component, pageProps }) => {
 	const appearance = {
 		variables: {
@@ -39,13 +33,13 @@ export default ({ Component, pageProps }) => {
 	if (process.env.ENV === 'prd')
 		return (
 			<ClerkProviderExtension {...{ appearance, ...pageProps }}>
-				<Simpler {...{ Component }} />
+				<Component />
 			</ClerkProviderExtension>
 		)
 
 	return (
 		<ClerkProviderWeb {...{ appearance, ...pageProps }}>
-			<Simpler {...{ Component }} />
+			<Component />
 		</ClerkProviderWeb>
 	)
 }
