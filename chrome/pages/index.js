@@ -1,7 +1,8 @@
 // Packages
 import { SignedIn, SignedOut, useAuth } from '@clerk/nextjs'
-// Packages
 import { useRouter } from 'next/router'
+// Layouts
+import Terms from '^/terms'
 // Elements
 import Button from '~/button'
 import Logo from '~/logo'
@@ -42,6 +43,8 @@ const PagesHome = () => {
 							simplerlist.com
 						</span>
 					</p>
+
+					<Terms />
 
 					<div className='my-4'>
 						<Button action={() => router.push('/signup')} primary={true} text='Sign up' />

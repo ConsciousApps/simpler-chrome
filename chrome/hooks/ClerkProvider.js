@@ -13,28 +13,30 @@ export const ClerkProvider = ({ children, ...rest }) => {
 
 			await clerk.load()
 
+			const { token } = await chrome.storage.local.get('token')
+
 			clerk.__unstable__onBeforeRequest(async requestInit => {
 				// https://reactnative.dev/docs/0.61/network#known-issues-with-fetch-and-cookie-based-authentication
 				requestInit.credentials = 'omit'
 
 				requestInit.url?.searchParams.append('_is_native', '1')
 
-				const jwt = await getToken(process.env.CLERK_JWT_KEY)
-
-				requestInit.headers.set('authorization', jwt || '')
+				requestInit.headers?.set('authorization', token)
 			})
 
 			clerk.__unstable__onAfterResponse(async (_, response) => {
 				const authHeader = response.headers.get('authorization')
 
-				if (authHeader) await saveToken(process.env.CLERK_JWT_KEY, authHeader)
+				if (authHeader) await chrome.storage.local.set({ token: authHeader })
 			})
+
+			await clerk.load({ standardBrowser: false })
 
 			setClerkInstance(clerk)
 		})()
 	}, [])
 
-	if (!clerkInstance) return <div className='w-80 mx-auto p-4' />
+	if (!clerkInstance) return <div className='w-80' />
 
 	return (
 		<ClerkReactProvider {...rest} Clerk={clerkInstance}>
