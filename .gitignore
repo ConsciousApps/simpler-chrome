@@ -5,6 +5,6 @@ chrome/node_modules
 extension/index.html
 extension/assets
 extension/next
-.DS_Store
+*/.DS_Store
 */**/.DS_Store
 extension.zip

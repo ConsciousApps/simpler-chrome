@@ -36,7 +36,7 @@ export const ClerkProvider = ({ children, ...rest }) => {
 		})()
 	}, [])
 
-	if (!clerkInstance) return <div className='w-80' />
+	if (!clerkInstance) return <div className='w-80'>Loading...</div>
 
 	return (
 		<ClerkReactProvider {...rest} Clerk={clerkInstance}>
