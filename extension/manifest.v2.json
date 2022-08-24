@@ -1,10 +1,10 @@
 {
-	"name": "simpler | prioritize your life",
-	"description": "simpler is a productivity app that helps you prioritize what needs to get done so you can focus on what truly matters.",
+	"name": "simpler | Make it real. Get it done.",
+	"description": "simpler is an intelligent productivity app that helps you organize and prioritize what needs to get done so you can focus on what truly matters.",
 	"version": "2.0.0",
 	"manifest_version": 2,
 	"browser_action": {
-		"default_title": "simpler | prioritize your life",
+		"default_title": "simpler | Make it real. Get it done.",
 		"default_popup": "index.html"
 	},
 	"content_security_policy": "script-src 'self'; object-src 'self'",
