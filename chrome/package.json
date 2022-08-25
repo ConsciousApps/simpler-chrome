@@ -1,6 +1,6 @@
 {
 	"name": "simpler-chrome",
-	"private": true,
+	"private": false,
 	"scripts": {
 		"build": "rm -rf ../extension.zip ../extension/index.html ../extension/assets ../extension/next && node ./scripts/build && next export && mv out/_next out/next && sed -i '' -e 's/\\/_next/\\.\\/next/g' out/**.html && mv out/index.html ../extension && rsync -va --delete-after out/next/ ../extension/next/ && rm -rf out && rsync -va --delete-after public/assets ../extension/ && cd .. && zip -r extension.zip ./extension -x *.DS_Store && cd ./chrome",
 		"next": "node ./scripts/dev",
