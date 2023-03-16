@@ -29,11 +29,6 @@ const App = ({ Component, pageProps }) => {
 		}
 	}
 
-	console.log('yo')
-	console.log(process.env.REACT_APP_CLERK_PUBLISHABLE_KEY)
-
-	if (typeof window === 'undefined') return null
-
 	return (
 		<ClerkProvider
 			{...{
