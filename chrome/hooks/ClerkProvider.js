@@ -7,7 +7,7 @@ export const ClerkProvider = ({ children, ...rest }) => {
 
 	useEffect(() => {
 		;(async () => {
-			const Clerk = (await import('@clerk/clerk-js')).default
+			const Clerk = (await import('./clerk.browser.js')).default
 
 			const clerk = new Clerk(process.env.NEXT_PUBLIC_CLERK_FRONTEND_API)
 

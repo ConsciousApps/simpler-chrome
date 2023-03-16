@@ -1,7 +1,7 @@
 // Packages
 import React from 'react'
 import { ClerkProvider as ClerkProviderWeb } from '@clerk/nextjs'
-import { ClerkProvider as ClerkProviderExtension } from '=/ClerkProvider'
+import { ClerkProvider as ClerkProviderExtension } from '=/ClerkProviderReact'
 // Global CSS
 import '@/output.css'
 
