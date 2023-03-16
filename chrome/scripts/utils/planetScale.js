@@ -4,4 +4,4 @@ const ScriptsUtilsPlanetScale = ({ branch, execute }) =>
 		branch.replace('_', '-') || branch
 	} --execute-protocol 'mysql' --execute-env-url 'APP_DB' --execute '${execute}'`
 
-module.exports = ScriptsUtilsPlanetScale
+export default ScriptsUtilsPlanetScale

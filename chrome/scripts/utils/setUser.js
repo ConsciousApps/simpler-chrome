@@ -1,8 +1,8 @@
 // Packages
-const shell = require('shelljs')
+import shell from 'shelljs'
 // Utils
-const colors = require('./colors.js')
-const exit = require('./exit.js')
+import colors from './colors.js'
+import exit from './exit.js'
 
 /**
  * This script prepends a `sudo -u username` to every shelljs exec, since `shelljs` by default uses the `root` user rather than the actual username (e.g. `martinadams`); this causes permission errors later on. So we need to set the actual username each time we `shell.exec`
@@ -28,4 +28,4 @@ const ScriptUtilsSetUser = async () => {
 	shell.env['USERNAME'] = username
 }
 
-module.exports = ScriptUtilsSetUser
+export default ScriptUtilsSetUser

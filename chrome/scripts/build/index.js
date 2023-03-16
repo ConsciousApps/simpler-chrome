@@ -1,7 +1,7 @@
 // Packages
-const selectEnvOrDb = require('../utils/selectEnvOrDb.js')
-const setUser = require('../utils/setUser.js')
-const shellExec = require('../utils/shellExec.js')
+import selectEnvOrDb from '../utils/selectEnvOrDb.js'
+import setUser from '../utils/setUser.js'
+import shellExec from '../utils/shellExec.js'
 
 const ScriptBuild = async () => {
 	await setUser()

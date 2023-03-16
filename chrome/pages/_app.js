@@ -1,11 +1,10 @@
 // Packages
 import React from 'react'
-import { ClerkProvider as ClerkProviderWeb } from '@clerk/nextjs'
-import { ClerkProvider as ClerkProviderExtension } from '=/ClerkProviderReact'
+import ClerkProvider from '-/clerk/ClerkProvider'
 // Global CSS
 import '@/output.css'
 
-export default ({ Component, pageProps }) => {
+const App = ({ Component, pageProps }) => {
 	const appearance = {
 		variables: {
 			colorPrimary: '#a21caf',
@@ -30,16 +29,28 @@ export default ({ Component, pageProps }) => {
 		}
 	}
 
-	if (process.env.ENV === 'prd')
-		return (
-			<ClerkProviderExtension {...{ appearance, ...pageProps }}>
-				<Component />
-			</ClerkProviderExtension>
-		)
+	console.log('yo')
+	console.log(process.env.REACT_APP_CLERK_PUBLISHABLE_KEY)
+
+	if (typeof window === 'undefined') return null
 
 	return (
-		<ClerkProviderWeb {...{ appearance, ...pageProps }}>
+		<ClerkProvider
+			{...{
+				appearance,
+				publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY || '',
+				...pageProps
+			}}
+		>
 			<Component />
-		</ClerkProviderWeb>
+		</ClerkProvider>
 	)
+
+	// return (
+	// 	<ClerkProviderWeb {...{ appearance, ...pageProps }}>
+	// 		<Component />
+	// 	</ClerkProviderWeb>
+	// )
 }
+
+export default App

@@ -1,8 +1,8 @@
 // Utilities
-const ps = require('../utils/planetScale.js')
-const selectEnvOrDb = require('../utils/selectEnvOrDb.js')
-const setUser = require('../utils/setUser.js')
-const shellExec = require('../utils/shellExec.js')
+import ps from '../utils/planetScale.js'
+import selectEnvOrDb from '../utils/selectEnvOrDb.js'
+import setUser from '../utils/setUser.js'
+import shellExec from '../utils/shellExec.js'
 
 const ScriptNext = async () => {
 	await setUser()

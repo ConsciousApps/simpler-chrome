@@ -1,0 +1,10 @@
+{
+	"name": "interscovery",
+	"manifest_version": 3,
+	"version": "1.0",
+	"host_permissions": [
+		"*://localhost:3000/",
+		"*://clerk.wise.firefly-49.lcl.dev/",
+		"*://*.simplerlist.com/"
+	]
+}

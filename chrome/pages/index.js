@@ -14,6 +14,8 @@ const PagesHome = () => {
 
 	const { signOut } = useAuth()
 
+	if (typeof window === 'undefined') return null
+
 	return (
 		<>
 			<SignedIn>

@@ -1,8 +1,8 @@
 // Packages
-const inquirer = require('inquirer')
+import inquirer from 'inquirer'
 // Utilities
-const colors = require('./colors.js')
-const shellExec = require('./shellExec.js')
+import colors from './colors.js'
+import shellExec from './shellExec.js'
 
 const ScriptUtilsSelectEnvOrDb = async ({ isDev, type = 'env' } = { type: 'env' }) => {
 	let currentEnv = ''
@@ -90,4 +90,4 @@ const ScriptUtilsSelectEnvOrDb = async ({ isDev, type = 'env' } = { type: 'env' 
 	}
 }
 
-module.exports = ScriptUtilsSelectEnvOrDb
+export default ScriptUtilsSelectEnvOrDb
