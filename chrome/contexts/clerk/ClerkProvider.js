@@ -1,7 +1,9 @@
 // Packages
 import { ClerkProvider } from '@clerk/clerk-react'
 
-export default function CustomClerkProvider({ children, ...rest }) {
+export default function CustomClerkProvider({ children, Clerk, ...rest }) {
+	if (!Clerk) return null
+
 	return (
 		<ClerkProvider
 			{...{

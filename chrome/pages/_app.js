@@ -36,6 +36,8 @@ const App = ({ Component, pageProps }) => {
 		})()
 	}, [])
 
+	console.log(clerk)
+
 	return (
 		<ClerkProvider
 			{...{
