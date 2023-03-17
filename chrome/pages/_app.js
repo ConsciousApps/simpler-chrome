@@ -1,10 +1,11 @@
 // Packages
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import ClerkProvider from '-/clerk/ClerkProvider'
 // Global CSS
 import '@/output.css'
 
 const App = ({ Component, pageProps }) => {
+	const [clerk, setClerk] = useState(null)
 	const appearance = {
 		variables: {
 			colorPrimary: '#a21caf',
@@ -29,11 +30,18 @@ const App = ({ Component, pageProps }) => {
 		}
 	}
 
+	useEffect(() => {
+		;(async () => {
+			setClerk(await import('@clerk/clerk-js'))
+		})()
+	}, [])
+
 	return (
 		<ClerkProvider
 			{...{
 				appearance,
 				publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY || '',
+				Clerk: clerk,
 				...pageProps
 			}}
 		>
